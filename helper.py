@@ -1,6 +1,5 @@
 
 from urlextract import URLExtract
-from wordcloud import WordCloud
 from collections import Counter
 import pandas as pd
 import emoji
@@ -52,12 +51,10 @@ def make_wordcloud(select_user,df):
                 if word not in stop_words:
                     words.append(word)
         return " ".join(words)
-
-    wc = WordCloud(width=100,height=100,max_font_size=10,background_color='white',colormap='viridis')
+    
     temp_df['message'] = temp_df['message'].apply(stop_word_del)
-    wc_df = wc.generate(temp_df['message'].str.cat(sep=" "))
 
-    return wc_df
+    return temp_df['message']
 
 # Remove stop_words from the message using file
 def common_words(select_user,df):

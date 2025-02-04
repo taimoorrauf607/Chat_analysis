@@ -2,6 +2,7 @@ import seaborn as sns
 import preprocessor
 import helper
 import streamlit as st
+from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 
 # Sidebar title
@@ -81,13 +82,19 @@ if uploaded_file is not None:
         st.pyplot(fig)
 
         # Make a wordcloud of most common words
+        col1,col2 = st.columns(2)
+        with col1:
+            width = st.slider("Width", 50, 400, 800)
+        with col2:
+            height = st.slider("Height", 50, 400, 800)
        
-        wc = helper.make_wordcloud(select_user,df)
-        plt.subplot()
-        plt.figure()
-        plt.imshow(wc)
-        st.title("Words Frequency WordCloud")
-        st.pyplot(plt)
+        words = helper.make_wordcloud(select_user,df)
+        wc = WordCloud(width=width,height=height,max_font_size=10,background_color='white',colormap='viridis')
+        wc_df = wc.generate(words.str.cat(sep=" "))
+        # Display the Word Cloud
+        fig, ax = plt.subplots(figsize=(10, 5), dpi=300)
+        ax.imshow(wc_df)
+        st.pyplot(fig)
 
         # Emoji analysis
         emoji_df, top_emoji = helper.emoji_counter(select_user, df)
