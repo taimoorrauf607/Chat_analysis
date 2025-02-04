@@ -81,8 +81,10 @@ if uploaded_file is not None:
         st.pyplot(fig)
 
         # Make a wordcloud of most common words
+       
         wc = helper.make_wordcloud(select_user,df)
         plt.subplot()
+        plt.figure()
         plt.imshow(wc)
         st.title("Words Frequency WordCloud")
         st.pyplot(plt)
@@ -146,5 +148,5 @@ if uploaded_file is not None:
             st.title("Messages Frequency over Time")
             active_time = helper.active_time(select_user,df)
             plt.figure(figsize=(18,8))
-            sns.heatmap(active_time)
+            sns.heatmap(active_time, annot=True)
             st.pyplot(plt)
