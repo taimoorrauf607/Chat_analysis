@@ -16,7 +16,7 @@ if "show_timeline" not in st.session_state:
     st.session_state.show_timeline = False
 
 # File uploader
-uploaded_file = st.sidebar.file_uploader("Choose file from PC")
+uploaded_file = st.sidebar.file_uploader("Upload Chat File")
 
 if uploaded_file is not None:
     bytes_data = uploaded_file.getvalue()
