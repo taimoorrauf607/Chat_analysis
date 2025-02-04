@@ -84,9 +84,9 @@ if uploaded_file is not None:
         # Make a wordcloud of most common words
         col1,col2 = st.columns(2)
         with col1:
-            width = st.slider("Width", 50, 400, 800)
+            width = st.slider("Width of wordcloud", 50, 400, 800)
         with col2:
-            height = st.slider("Height", 50, 400, 800)
+            height = st.slider("Height of wordcloud", 50, 400, 800)
        
         words = helper.make_wordcloud(select_user,df)
         wc = WordCloud(width=width,height=height,max_font_size=10,background_color='white',colormap='viridis')
