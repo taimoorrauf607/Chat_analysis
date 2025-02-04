@@ -60,7 +60,7 @@ if uploaded_file is not None:
 
         # Active user analysis
         if select_user == 'Overall':
-            st.title("Most Active Users")
+            st.title("Users Activity Graph")
             x, user_per = helper.active_user(df)
             fig, ax = plt.subplots()
             col1, col2 = st.columns(2)
@@ -77,8 +77,15 @@ if uploaded_file is not None:
         common_words = helper.common_words(select_user, df)
         fig, ax = plt.subplots()
         ax.barh(common_words[0], common_words[1])
-        st.title("Most Common Words")
+        st.title("Words Frequency")
         st.pyplot(fig)
+
+        # Make a wordcloud of most common words
+        wc = helper.make_wordcloud(select_user,df)
+        plt.subplot()
+        plt.imshow(wc)
+        st.title("Words Frequency WordCloud")
+        st.pyplot(plt)
 
         # Emoji analysis
         emoji_df, top_emoji = helper.emoji_counter(select_user, df)
@@ -96,7 +103,7 @@ if uploaded_file is not None:
             st.dataframe(emoji_df)
 
     # Most busy Time zone Analysis
-    st.title("Most busy Time")
+    st.title("Most Active Time")
     col1, col2 = st.columns(2)
     days, month = helper.busy_time(select_user,df)
 
@@ -136,7 +143,7 @@ if uploaded_file is not None:
             plt.xticks(rotation='vertical')
             st.pyplot(plt)
             # plot heatmap for most active time
-            st.title("Activity Time Graph")
+            st.title("Messages Frequency over Time")
             active_time = helper.active_time(select_user,df)
             plt.figure(figsize=(18,8))
             sns.heatmap(active_time)
