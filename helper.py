@@ -75,7 +75,6 @@ def common_words(select_user,df):
             if word not in stop_words:
                 words.append(word)
 
-    
     common_words = pd.DataFrame(Counter(words).most_common(20))
     return common_words
 
