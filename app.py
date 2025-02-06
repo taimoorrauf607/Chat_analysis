@@ -88,13 +88,13 @@ if uploaded_file is not None:
         with col2:
             height = st.slider("Height of wordcloud", 50, 400, 800)
        
-        words = helper.make_wordcloud(select_user,df)
-        wc = WordCloud(width=width,height=height,max_font_size=10,background_color='white',colormap='viridis')
-        wc_df = wc.generate(words.str.cat(sep=" "))
-        # Display the Word Cloud
-        fig, ax = plt.subplots(figsize=(10, 5), dpi=300)
-        ax.imshow(wc_df)
-        st.pyplot(fig)
+        # words = helper.make_wordcloud(select_user,df)
+        # wc = WordCloud(width=width,height=height,max_font_size=10,background_color='white',colormap='viridis')
+        # wc_df = wc.generate(words.str.cat(sep=" "))
+        # # Display the Word Cloud
+        # fig, ax = plt.subplots(figsize=(10, 5), dpi=300)
+        # ax.imshow(wc_df)
+        # st.pyplot(fig)
 
         # Emoji analysis
         emoji_df, top_emoji = helper.emoji_counter(select_user, df)
