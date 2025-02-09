@@ -139,21 +139,21 @@ if uploaded_file is not None:
         plot_list = ['line', 'bar', 'barh', 'hist','box', 'kde']
         plot_type = st.selectbox("Choose a Plot Type", plot_list)
     # Show Timeline Button
-    if st.sidebar.button("Timeline Analysis"):
-        st.session_state.show_timeline = True
+        if st.sidebar.button("Timeline Analysis"):
+            st.session_state.show_timeline = True
 
-    if st.session_state.show_timeline:
-            # plot a graph for time = month-year 
-            plt.figure(figsize=(10, 5))
-            plt.subplot(121)
-            color_input = st.text_input("Enter color for Your Graph")
-            colors = [c.strip() for c in color_input.split(",") if c.strip()] if color_input else ["black"]# Process color input
-            month_count.plot('time', 'message', kind=plot_type, color=colors)
-            plt.xticks(rotation='vertical')
-            st.pyplot(plt)
-            # plot heatmap for most active time
-            st.title("Messages Frequency over Time")
-            active_time = helper.active_time(select_user,df)
-            plt.figure(figsize=(18,8))
-            sns.heatmap(active_time, annot=True)
-            st.pyplot(plt)
+        if st.session_state.show_timeline:
+                # plot a graph for time = month-year 
+                plt.figure(figsize=(10, 5))
+                plt.subplot(121)
+                color_input = st.text_input("Enter color for Your Graph")
+                colors = [c.strip() for c in color_input.split(",") if c.strip()] if color_input else ["black"]# Process color input
+                month_count.plot('time', 'message', kind=plot_type, color=colors)
+                plt.xticks(rotation='vertical')
+                st.pyplot(plt)
+                # plot heatmap for most active time
+                st.title("Messages Frequency over Time")
+                active_time = helper.active_time(select_user,df)
+                plt.figure(figsize=(18,8))
+                sns.heatmap(active_time, annot=True)
+                st.pyplot(plt)
