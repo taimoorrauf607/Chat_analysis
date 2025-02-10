@@ -82,19 +82,30 @@ if uploaded_file is not None:
         st.pyplot(fig)
 
         # # Make a wordcloud of most common words
-        # col1,col2 = st.columns(2)
-        # with col1:
-        #     width = st.slider("Width of wordcloud", 50, 400, 800)
-        # with col2:
-        #     height = st.slider("Height of wordcloud", 50, 400, 800)
+        words = helper.make_wordcloud(select_user,df)
+        # def generate_wordcloud(input):
+        #     cloud = WordCloud(width=500, height=500, max_words=500, background_color='black', colormap='coolwarm')
+        #     wordcloud = cloud.generate(input.str.cat(sep=" "))
+        #     plt.figure(figsize=(10, 8))
+        #     plt.imshow(wordcloud, interpolation='bilinear')
+        #     plt.axis('off')
+        #     plt.tight_layout()
+        #     st.pyplot(plt)
+        # generate_wordcloud(words)
+        
+        wc = WordCloud(width=500,height=500,max_words=400,background_color='white',colormap='viridis')
+        wc_df = wc.generate(words.str.cat(sep=" "))
+        # Display the Word Cloud
+        plt.figure(figsize=(10, 5))
+        # plt.subplot(121)
+        plt.imshow(wc_df,interpolation='bilinear')
+        plt.axis('off')
+        plt.tight_layout()
+        st.pyplot(plt)
+        
        
-        # words = helper.make_wordcloud(select_user,df)
-        # wc = WordCloud(width=width,height=height,max_font_size=10,background_color='white',colormap='viridis')
-        # wc_df = wc.generate(words.str.cat(sep=" "))
-        # # Display the Word Cloud
-        # fig, ax = plt.subplots(figsize=(10, 5), dpi=300)
-        # ax.imshow(wc_df)
-        # st.pyplot(fig)
+
+
 
         # Emoji analysis
         emoji_df, top_emoji = helper.emoji_counter(select_user, df)
