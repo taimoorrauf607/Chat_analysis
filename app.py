@@ -82,16 +82,16 @@ if uploaded_file is not None:
         st.pyplot(fig)
 
         # # Make a wordcloud of most common words
-        words = helper.make_wordcloud(select_user,df)
-        def generate_wordcloud(input):
-            cloud = WordCloud(width=500, height=500, max_words=500, background_color='black', colormap='coolwarm')
-            wordcloud = cloud.generate(input.str.cat(sep=" "))
-            plt.figure(figsize=(10, 8))
-            plt.imshow(wordcloud, interpolation='bilinear')
-            plt.axis('off')
-            plt.tight_layout()
-            st.pyplot(plt)
-        generate_wordcloud(words)
+        # words = helper.make_wordcloud(select_user,df)
+        # def generate_wordcloud(input):
+        #     cloud = WordCloud(width=500, height=500, max_words=500, background_color='black', colormap='coolwarm')
+        #     wordcloud = cloud.generate(input.str.cat(sep=" "))
+        #     plt.figure(figsize=(10, 8))
+        #     plt.imshow(wordcloud, interpolation='bilinear')
+        #     plt.axis('off')
+        #     plt.tight_layout()
+        #     st.pyplot(plt)
+        # generate_wordcloud(words)
         
         # wc = WordCloud(width=500,height=500,max_words=400,background_color='white',colormap='viridis')
         # wc_df = wc.generate(words.str.cat(sep=" "))
