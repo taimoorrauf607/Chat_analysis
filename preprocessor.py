@@ -1,5 +1,6 @@
 import pandas as pd
 import re
+import numpy as np
 # pre-processing
 def preprocessing(text):
     pattern = '\d{1,2}/\d{1,2}/\d{2,4}, \d{1,2}:\d{2}\s[apAP][mM]\s-'
@@ -51,5 +52,6 @@ def preprocessing(text):
             duration.append(str(hour)+'-'+str(hour+1))
 
     df['time']=duration
+    df['year'] =np.where((df['Month'] != 'January') & (df['year'] == 2025), 2024, df['year'])
 
     return df.drop(['messages','Dates'],axis=1)
