@@ -52,6 +52,6 @@ def preprocessing(text):
             duration.append(str(hour)+'-'+str(hour+1))
 
     df['time']=duration
-    df['year'] =np.where((df['Month'] != 'January') & (df['year'] == 2025), 2024, df['year'])
+    # df['year'] =np.where((df['Month'] != 'January') & (df['year'] == 2025), 2024, df['year'])
 
     return df.drop(['messages','Dates'],axis=1)
