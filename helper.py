@@ -107,6 +107,7 @@ def monthly_activity(select_user, df):
     month_count['time'] = month_year
     return month_count
 
+
 # make a bar graph on Days and month to find most busy_month and days
 def busy_time(select_user,df):
     if select_user != 'Overall':

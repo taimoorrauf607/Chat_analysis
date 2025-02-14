@@ -103,12 +103,10 @@ if uploaded_file is not None:
         # plt.tight_layout()
         # st.pyplot(plt)
         
-    
         # Emoji analysis
         # emoji_df, top_emoji = helper.emoji_counter(select_user, df)
-        
-        # col1, col2 = st.columns(2)
 
+        # col1, col2 = st.columns(2)
         # with col1:
         #     fig, ax = plt.subplots()
         #     # ax.pie(top_emoji.iloc[:, 1],labels=top_emoji.iloc[:,0])
