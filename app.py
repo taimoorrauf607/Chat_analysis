@@ -118,26 +118,26 @@ if uploaded_file is not None:
         with col2:
             st.dataframe(emoji_df)
 
-    # Most busy Time zone Analysis
-    st.title("Most Active Time")
-    col1, col2 = st.columns(2)
-    days, month = helper.busy_time(select_user,df)
+        # Most busy Time zone Analysis
+        st.title("Most Active Time")
+        col1, col2 = st.columns(2)
+        days, month = helper.busy_time(select_user,df)
 
-    with col1:
+        with col1:
+            
+            plt.figure(figsize=(12, 6))
+            plt.subplot(121)
+            plt.bar(days.index,days.values)
+            plt.xticks(rotation='vertical')
+            st.pyplot(plt)
         
-        plt.figure(figsize=(12, 6))
-        plt.subplot(121)
-        plt.bar(days.index,days.values)
-        plt.xticks(rotation='vertical')
-        st.pyplot(plt)
-    
-    with col2:
-        days = helper.busy_time(select_user,df)
-        plt.figure(figsize=(12, 6))
-        plt.subplot(121)
-        plt.bar(month.index,month.values, color='g')
-        plt.xticks(rotation='vertical')
-        st.pyplot(plt)
+        with col2:
+            days = helper.busy_time(select_user,df)
+            plt.figure(figsize=(12, 6))
+            plt.subplot(121)
+            plt.bar(month.index,month.values, color='g')
+            plt.xticks(rotation='vertical')
+            st.pyplot(plt)
 
     # Show Timeline Button (only enabled after analysis)
     if st.session_state.show_analysis:
@@ -162,6 +162,7 @@ if uploaded_file is not None:
                 st.title("Messages Frequency over Time")
                 active_time = helper.active_time(select_user,df)
                 plt.figure(figsize=(18,8))
-                sns.heatmap(active_time, cmap='coolwarm')
+                sns.heatmap(active_time, cmap='coolwarm',linecolor='black')
+                # sns.heatmap(active_time, cmap='viridis', annot=True, linewidths=0.5, linecolor='black')
                 # sns.heatmap(active_time, annot=True)
                 st.pyplot(plt)
